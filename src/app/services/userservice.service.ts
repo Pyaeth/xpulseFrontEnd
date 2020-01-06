@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserserviceService {
 
-  private baseUrl: "localhost:/XPulse";
+  private baseUrl: "localhost:4200";
   getUser(username:string, password: string) {
     this.httpClient.get(this.baseUrl + '/login').subscribe((res)=>{
       console.log(res);

@@ -1,3 +1,8 @@
 .apptitle {
     background-image: url('/assets/cards.jpg');
 }
+
+#fb-button {
+    border: 2px solid #3b5998!important;
+    padding: 10px 25px 10px 25px;
+}
