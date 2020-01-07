@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AppRoutingModule } from './app-routing.module';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import { ChartsModule } from 'ng2-charts';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,6 +16,7 @@ import { UserComponent } from '../components/user/user.component';
 import { UserDetailsComponent } from '../components/userdetails/userdetails.component';
 import { PageNotFoundComponent } from '../components/404pagenotfound/404.component';
 import { WelcomeComponent } from '../components/welcomepage/welcome.component';
+import { DashboardDoughnutChartComponent } from '../components/dashboard-doughnut-chart/dashboard-doughnut-chart.component';
 
 
 const appRoutes: Routes = [
@@ -35,7 +37,8 @@ const appRoutes: Routes = [
     UserComponent,
     UserDetailsComponent,
     PageNotFoundComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    DashboardDoughnutChartComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
