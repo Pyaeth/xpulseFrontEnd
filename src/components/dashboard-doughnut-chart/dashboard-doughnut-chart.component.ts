@@ -7,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardDoughnutChartComponent implements OnInit {
   public doughnutChartLabels = ['Food/Restaurant', 'Shopping', 'Online Payments', 'Bills', 'Bank Credits', 'Insurance Policies'];
-  public doughnutChartData = [120, 150, 180, 90, 50];
+  public doughnutChartData = [120, 150, 180, 90, 50, 200];
   public doughnutChartType = 'doughnut';
+  public doughnutChartOptions = {
+    legend: {
+      position: 'right',
+      labels: {
+        fontSize: 18
+       }
+    }
+  };
+
   constructor() { }
 
   ngOnInit() {
