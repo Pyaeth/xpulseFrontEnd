@@ -15,10 +15,17 @@ export class DashboardDoughnutChartComponent implements OnInit {
       labels: {
         fontSize: 18
        }
+    },
+    elements: {
+      arc: {
+        borderColor: '#000',
+        borderWidth: 0.5
+      }
     }
   };
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
   }

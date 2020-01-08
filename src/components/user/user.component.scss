@@ -1,7 +1,6 @@
 .tiles {
     margin: 10px 10px 10px 10px;
     border: 1px solid #000000;
-    background-color: #94a0c4;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 5%;
@@ -35,4 +34,29 @@
 
 .nav-link:hover {
     color: #4e629d;
+}
+
+h5 {
+    padding-top: 10px;
+}
+
+#options {
+    background-color: #918c81;
+}
+.cards:hover > #options {
+    background-color: #bfb9ac;
+}
+
+#transactions {
+    background-color: #bd8619;
+}
+.cards:hover > #transactions {
+        background-color: #e6b960;
+}
+
+#balance {
+    background-color: #10ccbc;
+}
+.cards:hover > #balance {
+    background-color: #71e3d9;
 }

@@ -3,8 +3,12 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AppRoutingModule } from './app-routing.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material/select';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import { ChartsModule } from 'ng2-charts';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatSlideToggleModule, MatSlideToggle} from '@angular/material/slide-toggle';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -46,12 +50,16 @@ const appRoutes: Routes = [
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatSlideToggleModule,
     ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     ),
-    ChartsModule
+    ChartsModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

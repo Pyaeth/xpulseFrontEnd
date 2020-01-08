@@ -13,6 +13,10 @@ export class UserComponent {
   timePeriod: string;
   balance: number;
   profit: boolean;
+  unitsReported: string;
+  times: string[] = ['week', 'month', 'year'];
+  selectedTimeframe: string;
+  isAmountsToggled: boolean;
   
   constructor() {
     this.timePeriod = 'month';
@@ -20,5 +24,12 @@ export class UserComponent {
     if (this.balance < 0) {
       document.getElementById("balance").style.backgroundColor = '#D9363F';
     }
+    this.selectedTimeframe = 'week';
+    this.isAmountsToggled = false;
+  }
+
+  selectTimeframe(event){
+    console.log(event);
+    alert(event);
   }
 }

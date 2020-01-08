@@ -6,7 +6,7 @@
           <i class="fa fa-circle-o" aria-hidden="true"></i>
           Dashboard
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/login">
           <i class="fa fa-plus-square" aria-hidden="true"></i>
           Add Transaction
         </a>
@@ -29,14 +29,14 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="card cards" style="width: 100%">
-            <div class="tiles">
+            <div class="tiles" id="transactions">
               <p><i class="fa fa-credit-card fa-5x tile-icon" aria-hidden="true"></i></p>
               <p class="tile-primary"> Transactions: {{total}} </p>
               <p class="tile-secondary"> Incoming: {{inc}}</p>
               <p class="tile-secondary"> Outgoing: {{out}}</p>
             </div>
             <div class="card-body" style="align-content: center;">
-              <h5 class="card-title">Transactions this {{timePeriod}}</h5>
+              <h5 class="card-title">Transactions this {{selectedTimeframe}}</h5>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="tiles" id="balance">
               <p><i class="fa fa-balance-scale fa-5x  tile-icon" aria-hidden="true"></i></p>
               <p class="tile-primary"> Balance: {{balance}} </p>
-              <p class="tile-secondary"> Compared to last {{timePeriod}}:
+              <p class="tile-secondary"> Compared to last {{selectedTimeframe}}:
                 <i class="fa fa-caret-up" aria-hidden="true" *ngIf="profit" style="color:green"></i>
                 <i class="fa fa-caret-down" aria-hidden="true" *ngIf="!profit" style="color:red"></i>
               </p>
@@ -60,26 +60,34 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="card cards" style="width: 100%">
-            <div class="tiles" id="balance">
-              <p><i class="fa fa-balance-scale fa-5x  tile-icon" aria-hidden="true"></i></p>
-              <p class="tile-primary"> Balance: {{balance}} </p>
-              <p class="tile-secondary"> Compared to last {{timePeriod}}:
-                <i class="fa fa-caret-up" aria-hidden="true" *ngIf="profit" style="color:green"></i>
-                <i class="fa fa-caret-down" aria-hidden="true" *ngIf="!profit" style="color:red"></i>
+            <div class="tiles" id="options">
+              <p><i class="fa fa-cogs fa-5x  tile-icon" aria-hidden="true"></i></p>
+              <p class="tile-primary"> Time period of reference: 
+                <mat-form-field>
+                  <mat-select [(value)]="selectedTimeframe" (onChange)="selectTimeframe($event)">
+                    <mat-option *ngFor="let time of times" value="{{time}}">
+                      {{time}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
               </p>
-            </div>
-            <div class="card-body" style="align-content: center;">
-              <h5 class="card-title">Current balance</h5>
-            </div>
+              <p class="tile-primary toggle-enabled"> Show amounts instead of numbers.&nbsp;
+                <mat-slide-toggle color="primary"></mat-slide-toggle>
+              </p>
+              
+          </div>
+          <div class="card-body" style="align-content: center;">
+            <h5 class="card-title">Report options</h5>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-6 card cards">
-      <dashboard-doughnut-chart></dashboard-doughnut-chart>
-      <div class="card-body" style="align-content: center;">
-        <h5 class="card-title">Statistics per category of transaction</h5>
-      </div>
+  </div>
+  <div class="col-sm-6 card cards">
+    <dashboard-doughnut-chart class="tiles" style="background-color: #ffffff;"></dashboard-doughnut-chart>
+    <div class="card-body" style="align-content: center;">
+      <h5 class="card-title">Statistics per category of transaction</h5>
     </div>
   </div>
+</div>
 </div>
