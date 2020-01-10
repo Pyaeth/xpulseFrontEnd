@@ -21,6 +21,7 @@ import { UserDetailsComponent } from '../components/userdetails/userdetails.comp
 import { PageNotFoundComponent } from '../components/404pagenotfound/404.component';
 import { WelcomeComponent } from '../components/welcomepage/welcome.component';
 import { DashboardDoughnutChartComponent } from '../components/dashboard-doughnut-chart/dashboard-doughnut-chart.component';
+import { ConfigService } from './config/config.service';
 
 
 const appRoutes: Routes = [
@@ -61,7 +62,9 @@ const appRoutes: Routes = [
     ChartsModule,
     NoopAnimationsModule
   ],
-  providers: [],
+  providers: [
+    ConfigService
+  ],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA]
 })
