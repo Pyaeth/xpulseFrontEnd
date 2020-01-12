@@ -21,7 +21,8 @@ import { UserDetailsComponent } from '../components/userdetails/userdetails.comp
 import { PageNotFoundComponent } from '../components/404pagenotfound/404.component';
 import { WelcomeComponent } from '../components/welcomepage/welcome.component';
 import { DashboardDoughnutChartComponent } from '../components/dashboard-doughnut-chart/dashboard-doughnut-chart.component';
-import { ConfigService } from './config/config.service';
+import { AuthenticationService } from './services/authenticationservice/authentication.service';
+import { AlertService } from './services/alertservice/alert.service';
 
 
 const appRoutes: Routes = [
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
     NoopAnimationsModule
   ],
   providers: [
-    ConfigService
+    AuthenticationService,
+    AlertService
   ],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA]

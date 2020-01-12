@@ -10,7 +10,7 @@
           <h4 class="card-title">Welcome!</h4>
           <h6 class="card-subtitle"> Please login:</h6>
           <br />
-          <form class="container" [formGroup]="userForm" (ngSubmit)="onClickSubmit(userForm.value)">
+          <form class="container" [formGroup]="userForm" (ngSubmit)="onClickSubmit()" #signinform="ngForm">
             <label class="sr-only" for="username">Username</label>
             <input type="text" class="form-control mb-2 mr-sm-2" id="exampleInputEmail1" placeholder="Username" formControlName="username">
 
