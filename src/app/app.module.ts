@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { AppRoutingModule } from './app-routing.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
@@ -16,10 +15,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { PulseHeader } from '../components/pulseheader/pulseheader.component';
+import { UpdateUDModal } from '../components/updateUserDetailsModal/updateUDModal.component';
+import { NavBar } from '../components/navbar/navbar.component';
 import { UserComponent } from '../components/user/user.component';
 import { UserDetailsComponent } from '../components/userdetails/userdetails.component';
 import { PageNotFoundComponent } from '../components/404pagenotfound/404.component';
 import { WelcomeComponent } from '../components/welcomepage/welcome.component';
+import { LoginComponent } from '../components/login/login.component';
 import { DashboardDoughnutChartComponent } from '../components/dashboard-doughnut-chart/dashboard-doughnut-chart.component';
 import { AuthenticationService } from './services/authenticationservice/authentication.service';
 import { AlertService } from './services/alertservice/alert.service';
@@ -27,24 +29,28 @@ import { AlertService } from './services/alertservice/alert.service';
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent, data: { title: 'Xpulse:: Welcome' } },
-  { path: 'login', component: UserComponent, data: { title: 'Xpulse:: Login' } },
-  { path: 'user/:id', component: UserDetailsComponent, data: { title: 'myXpulse' } },
-  { path: 'user/:id',
+  { path: 'login', component: LoginComponent, data: { title: 'Xpulse:: Login' } },
+  { path: 'myXpulse', component: UserDetailsComponent, data: { title: 'myXpulse' } },
+  { path: 'myXpulse',
     redirectTo: '/myXpulse',
     pathMatch: 'full'
   },
+  { path: 'home', component: UserComponent, data: { title: 'Xpulse:: Login' } },
   { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
   declarations: [
     PulseHeader,
+    NavBar,
+    UpdateUDModal,
     AppComponent,
     UserComponent,
     UserDetailsComponent,
     PageNotFoundComponent,
     WelcomeComponent,
-    DashboardDoughnutChartComponent
+    DashboardDoughnutChartComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

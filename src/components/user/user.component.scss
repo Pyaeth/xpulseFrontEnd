@@ -1,62 +1,54 @@
 .tiles {
-    margin: 10px 10px 10px 10px;
-    border: 1px solid #000000;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 5%;
-    color: #ffffff;
-    min-height: 250px;
+  margin: 10px 10px 10px 10px;
+  border: 1px solid #000000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5%;
+  color: #ffffff;
+  min-height: 250px;
 }
 
 .tile-icon {
-    text-align: center;
+  text-align: center;
 }
 
 .tile-primary {
-    font-size: large;
-    font-weight: bolder;
-    text-align: left;
+  font-size: large;
+  font-weight: bolder;
+  text-align: left;
 }
 
 .tile-secondary {
-    font-size: medium;
-    font-weight: bold;
-    text-align: left;
+  font-size: medium;
+  font-weight: bold;
+  text-align: left;
 }
 
 .cards {
-    text-align: center;
-}
-
-.nav-link {
-    color: #94a0c4;
-}
-
-.nav-link:hover {
-    color: #4e629d;
+  text-align: center;
 }
 
 h5 {
-    padding-top: 10px;
+  padding-top: 10px;
 }
 
 #options {
-    background-color: #918c81;
+  background-color: #918c81;
 }
 .cards:hover > #options {
-    background-color: #bfb9ac;
+  background-color: #bfb9ac;
 }
 
 #transactions {
-    background-color: #bd8619;
+  background-color: #bd8619;
 }
 .cards:hover > #transactions {
-        background-color: #e6b960;
+  background-color: #e6b960;
 }
 
 #balance {
-    background-color: #10ccbc;
+  background-color: #10ccbc;
 }
 .cards:hover > #balance {
-    background-color: #71e3d9;
+  background-color: #71e3d9;
 }

@@ -6,14 +6,31 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private serverUrl = 'http://localhost:4200';
+  private serverUrl = 'http://localhost:8080';
+  currentUserValue: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   getValidLogin(username: string, password: string) {
-    return this.http.post<any>(this.serverUrl, { username: username, password: password })
+    const requestOptions = {
+      headers : new HttpHeaders({'Content-Type': 'application/json'
+    }),
+    };
+    return this.httpClient.post<any>(`${this.serverUrl}/login`, { username: username, password: password }, requestOptions)
             .pipe(map(user => JSON.stringify(user)));
   }
 
-  setLogout() {}
+  setLogout() {
+    sessionStorage.clear();
+  }
+
+  createUser(username: string, password: string) {
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.httpClient.post<any>(`${this.serverUrl}/create`, { username: username, password: password }, requestOptions)
+      .pipe(map(user => JSON.stringify(user)));
+  }
 }

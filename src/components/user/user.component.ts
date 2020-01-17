@@ -1,12 +1,13 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { User } from 'src/app/entity/user';
 
 @Component({
   selector: 'user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent {
-
+export class UserComponent implements OnInit{
+  user: User;
   total: number;
   inc: number;
   out: number;
@@ -31,5 +32,10 @@ export class UserComponent {
   selectTimeframe(event){
     console.log(event);
     alert(event);
+  }
+
+  ngOnInit() {
+    this.user = JSON.parse(sessionStorage.getItem('user'));
+    console.log(this.user);
   }
 }

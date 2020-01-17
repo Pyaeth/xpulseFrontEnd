@@ -75,6 +75,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "XpulseFront:build"
+
           },
           "configurations": {
             "production": {

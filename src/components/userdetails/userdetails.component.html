@@ -1,13 +1,53 @@
-<div class="container-fluid">
-    <div class="row" style="background-image:url('/assets/cards.jpg')">
-      <div class="col-sm-1">
-        <img id="logo" src="/assets/icon.png" style="width:150px;">
-      </div>
-      <div class="col-sm-8">
-        <h1 class="text-left" style="padding-top: 5%;color:white; text-shadow: 2px 2px #000000;">
-          <span class="badge badge-pill badge-dark">X-PULSE</span>
-          <i> - Tracking the pulse of your transactions.</i>
-        </h1>
-      </div>
-    </div>
+<navbar></navbar>
+<div class="container">
+  <div class="row">
+    <h1>myXPulse: Manage my profile</h1>
   </div>
+  <div class="row">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">username: </th>
+          <td>{{user.username}}</td>
+          <td>
+              <button type="button" class="btn btn-info"  (click)="changeUsername()">Change username</button> &nbsp;
+              <button type="button" class="btn btn-warning"  (click)="changePassword()">Change password</button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">First Name: </th>
+          <td>{{user.firstname}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-success" (click)="editFirstName()">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Last Name: </th>
+          <td>{{user.lastname}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-success" (click)="editLastName()">Edit</button>
+          </td>
+        </tr>
+        <tr [ngClass]="{
+          'table-secondary': user.role == 'Regular',
+          'table-info': user.role == 'VIP',
+          'table-primary': user.role == 'Administrator',
+          'table-danger': user.role == 'Owner',
+          'table-default': user.role == null}">
+          <th scope="row">Role</th>
+          <td>{{user.role}}</td>
+          <td>
+            <button *ngIf="user.role == 'Regular'" type="button"  class="btn btn-success">Upgrade to VIP</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

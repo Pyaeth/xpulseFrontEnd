@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg">
+        <div class="navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <a class="nav-link active" href="home">
+                    <i class="fa fa-circle-o" aria-hidden="true"></i>
+                    Dashboard
+                </a>
+                <a class="nav-link" href="/addtransaction">
+                    <i class="fa fa-plus-square" aria-hidden="true"></i>
+                    Add Transaction
+                </a>
+                <a class="nav-link" href="/myXpulse">
+                    <i class="fa fa-address-card" aria-hidden="true"></i>
+                    myXpulse
+                </a>
+            </ul>
+            <div>
+                <p>Welcome, &nbsp; <br /> <b>{{user.username}} </b></p>
+            </div>
+            <button class="btn btn-secondary" (click)="setLogout()">Logout</button>
+        </div>
+    </nav>
+
+</div>

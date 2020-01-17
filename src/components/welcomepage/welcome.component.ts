@@ -57,7 +57,7 @@ export class WelcomeComponent implements OnInit {
       this.authenticationService.setLogout();
 
       // get return url from route parameters or default to '/'
-      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/user';
   }
 
     signin(form: NgForm) {

@@ -1,0 +1,41 @@
+<div class="container-fluid" style="background-color:black;height:3px;">
+</div>
+<div class="container-fluid" style="background-color:rgb(226, 212, 174);">
+  <div class="row filler">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div class="card" style="width: 35rem;">
+        <img src="/assets/cdimg.jpg" class="card-img-top">
+        <div class="card-body text-center">
+          <h4 class="card-title">Welcome!</h4>
+          <h6 *ngIf="!isCreateNewUserRequested" class="card-subtitle"> Please login:</h6>
+          <form class="container aligned" [formGroup]="userForm" (ngSubmit)="onClickSubmit()" #signinform="ngForm">
+            <label class="sr-only" for="username">Username</label>
+            <input type="text" class="form-control mb-2 mr-sm-2" id="exampleInputEmail1" placeholder="Username"
+              formControlName="username">
+
+            <label for="password"></label>
+            <div class="input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text"></div>
+              </div>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                formControlName="password">
+            </div>
+
+            <div class="form-check mb-2 mr-sm-2" style="text-align:center;">
+              <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+              <label class="form-check-label" for="inlineFormCheck"> Remember me </label>
+            </div>
+            <button *ngIf="!isCreateNewUserRequested" class="btn btn-success btn-lg" mdbWavesEffect>Login</button>
+          </form>
+          <p *ngIf="!isCreateNewUserRequested" class="card-text aligned"> Don't have an account yet? Join us for free: it only takes a minute!</p>
+          <button class="btn btn-primary" mdbWavesEffect (click)="createNewUser()">Register</button>
+          <a *ngIf="isCreateNewUserRequested" style="text-decoration:underline;" (click)="alreadyUser()">
+            <h6 class="aligned">I already have an account, take me to the User Login Area</h6></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
