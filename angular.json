@@ -8,7 +8,7 @@
       "schematics": {
         "@schematics/angular:component": {
           "styleext": "scsss"
-          }
+        }
       },
       "root": "",
       "sourceRoot": "src",
@@ -75,7 +75,6 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "XpulseFront:build"
-
           },
           "configurations": {
             "production": {
@@ -101,6 +100,9 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
+              "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
+              "node_modules/animate.css/animate.css",
               "src/styles.css"
             ],
             "scripts": []

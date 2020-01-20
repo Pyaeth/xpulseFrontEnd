@@ -24,6 +24,7 @@
     "@angular/router": "~8.2.3",
     "angular-bootstrap-md": "^8.8.1",
     "angular-font-awesome": "^2.3.7",
+    "animate.css": "^3.7.2",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "font-awesome": "^4.7.0",

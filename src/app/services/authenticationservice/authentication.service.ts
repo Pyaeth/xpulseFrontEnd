@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private serverUrl = 'http://localhost:8080';
+  private serverUrl = 'http://localhost:8081';
   currentUserValue: string;
 
   constructor(private httpClient: HttpClient) { }

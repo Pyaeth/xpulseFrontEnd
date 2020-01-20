@@ -9,6 +9,12 @@
         <div class="card-body text-center">
           <h4 class="card-title">Welcome!</h4>
           <h6 *ngIf="!isCreateNewUserRequested" class="card-subtitle"> Please login:</h6>
+          <div *ngIf="isInvalidLogin" class="alert alert-danger" role="alert">
+            Invalid combination of username and password. Please try again.
+          </div>
+          <div *ngIf="userAlreadyExists" class="alert alert-danger" role="alert">
+            Username already exists! Please pick another username.
+          </div>
           <form class="container aligned" [formGroup]="userForm" (ngSubmit)="onClickSubmit()" #signinform="ngForm">
             <label class="sr-only" for="username">Username</label>
             <input type="text" class="form-control mb-2 mr-sm-2" id="exampleInputEmail1" placeholder="Username"

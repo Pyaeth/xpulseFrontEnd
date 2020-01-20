@@ -1,50 +1,63 @@
-<div class="container-fluid" style="background-color:black;height:3px;">
-</div>
-<div class="container-fluid" style="background-color:rgb(226, 212, 174);">
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
-      <div class="card" style="width: 35rem;">
-        <img src="/assets/cdimg.jpg" class="card-img-top">
-        <div class="card-body text-center">
-          <h4 class="card-title">Welcome!</h4>
-          <h6 class="card-subtitle"> Please login:</h6>
-          <br />
-          <form class="container" [formGroup]="userForm" (ngSubmit)="onClickSubmit()" #signinform="ngForm">
-            <label class="sr-only" for="username">Username</label>
-            <input type="text" class="form-control mb-2 mr-sm-2" id="exampleInputEmail1" placeholder="Username" formControlName="username">
-
-            <label for="password"></label>
-            <div class="input-group mb-2 mr-sm-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text"></div>
-              </div>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password">
-            </div>
-
-            <div class="form-check mb-2 mr-sm-2" style="text-align:center;">
-              <input class="form-check-input" type="checkbox" id="inlineFormCheck">
-              <label class="form-check-label" for="inlineFormCheck"> Remember me </label>
-            </div>
-            <button class="btn btn-success btn-lg" mdbWavesEffect>Login</button>
-          </form>
-          <br/>
-          <div class="container unauthenticated">
-              <button type="button" class="btn btn-outline-primary" id="fb-button" mdbWavesEffect onclick="onFacebookLogin()">
-
-                <i class="fa fa-facebook-square fa-2x" style="color:#3b5998" aria-hidden="true"></i>
-                &nbsp; Connect with Facebook
-              </button>
-          </div>
-          <div class="container authenticated" style="display:none">
-            Logged in as: <span id="user"></span>
-          </div>
-
-          <p class="card-text"> Don't have an account yet? Join us for free: it only takes a minute!</p>
-          <button class="btn btn-primary" mdbWavesEffect>Register</button>
-        </div>
-      </div>
+<div class="row col-sm-12" style="height: 5vh;">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8" style="text-align: center;">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <a href="/login"><button mdbBtn type="button" color="success" class="waves-light" mdbWavesEffect>Login</button></a>
+      <button mdbBtn type="button" color="light" class="waves-light" disabled mdbWavesEffect>
+        << Start your experience now!>>
+      </button>
+      <a href="/register"><button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>Register</button></a>
     </div>
-    <div class="col-sm-4"></div>
   </div>
+  <div class="col-sm-2"></div>
 </div>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+      <mdb-carousel-item>
+        <div class="view w-100">
+          <img class="d-block w-100" src="/assets/car-img1.jpg" alt="First slide">
+          <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive">Say goodbye to stressful bills!</h3>
+          <p>X-Pulse helps you easily track your recurring payments. From utilities bills, to bank credits, they'll
+            never
+            give you headaches again!</p>
+        </div>
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <div class="view w-100">
+          <img class="d-block w-100" src="/assets/car-img2.jpg" alt="Second slide">
+          <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive">Our philosophy?</h3>
+          <p>Your fully customized experience, specially tailored for your needs!</p>
+        </div>
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <div class="view w-100">
+          <img class="d-block w-100" src="/assets/car-img3.jpg" alt="Third slide">
+          <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive">Forget about paper and pencil financial plans!</h3>
+          <p>All your financial plans, organized in one place!</p>
+        </div>
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <div class="view w-100">
+          <img class="d-block w-100" src="/assets/car-img4.jpg" alt="Fourth slide">
+          <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive">Join us today!</h3>
+          <p>Register for free right now!</p>
+        </div>
+      </mdb-carousel-item>
+    </mdb-carousel>
+  </div>
+  <div class="col-sm-2">
+  </div>

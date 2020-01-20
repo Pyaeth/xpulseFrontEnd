@@ -7,8 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import { ChartsModule } from 'ng2-charts';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatSlideToggleModule, MatSlideToggle} from '@angular/material/slide-toggle';
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -30,6 +29,7 @@ import { AlertService } from './services/alertservice/alert.service';
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent, data: { title: 'Xpulse:: Welcome' } },
   { path: 'login', component: LoginComponent, data: { title: 'Xpulse:: Login' } },
+  { path: 'register', component: LoginComponent, data: { title: 'Xpulse:: Register', isCreateNewUserRequested: true} },
   { path: 'myXpulse', component: UserDetailsComponent, data: { title: 'myXpulse' } },
   { path: 'myXpulse',
     redirectTo: '/myXpulse',

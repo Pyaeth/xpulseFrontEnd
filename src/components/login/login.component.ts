@@ -16,7 +16,9 @@ import { first } from 'rxjs/operators';
 export class LoginComponent implements OnInit {
   loading = false;
   isCreateNewUserRequested = false;
+  isInvalidLogin = false;
   isInputFilled = false;
+  userAlreadyExists = false;
   submitted = false;
   returnUrl: string;
   error = '';
@@ -42,6 +44,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.isCreateNewUserRequested = this.route.snapshot.data['isCreateNewUserRequested'];
     this.userForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -54,9 +58,6 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  signin(form: NgForm) {
-    console.log(form);
-  }
   onClickSubmit() {
     this.submitted = true;
 
@@ -74,8 +75,7 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('home');
         },
         error => {
-          this.alertService.error(error);
-          this.error = error.error;
+          this.isInvalidLogin = true;
         });
   }
 
@@ -90,8 +90,7 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('home');
           },
           error => {
-            this.alertService.error(error);
-            this.error = error.error;
+            this.userAlreadyExists = true;
           });
     } else {
       this.isCreateNewUserRequested = true;
