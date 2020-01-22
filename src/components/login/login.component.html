@@ -15,7 +15,7 @@
           <div *ngIf="userAlreadyExists" class="alert alert-danger" role="alert">
             Username already exists! Please pick another username.
           </div>
-          <form class="container aligned" [formGroup]="userForm" (ngSubmit)="onClickSubmit()" #signinform="ngForm">
+          <form class="container aligned" [formGroup]="userForm" (ngSubmit)="onClickSubmit()">
             <label class="sr-only" for="username">Username</label>
             <input type="text" class="form-control mb-2 mr-sm-2" id="exampleInputEmail1" placeholder="Username"
               formControlName="username">

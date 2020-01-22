@@ -17,22 +17,26 @@
           <th scope="row">username: </th>
           <td>{{user.username}}</td>
           <td>
-              <button type="button" class="btn btn-info"  (click)="changeUsername()">Change username</button> &nbsp;
-              <button type="button" class="btn btn-warning"  (click)="changePassword()">Change password</button>
+            <button class="btn btn-info" data-toggle="modalUN" data-target="#modalUN" (click)="modalUN.show()">Change
+              username</button> &nbsp;
+            <button class="btn btn-warning" data-toggle="modalPW" data-target="#modalPW" (click)="modalPW.show()">Change
+              password</button>
           </td>
         </tr>
         <tr>
           <th scope="row">First Name: </th>
           <td>{{user.firstname}}</td>
           <td>
-            <button type="button" class="btn btn-outline-success" (click)="editFirstName()">Edit</button>
+            <button class="btn btn-outline-success" data-toggle="modalFN" data-target="#modalFN"
+              (click)="modalFN.show()">Edit</button>
           </td>
         </tr>
         <tr>
           <th scope="row">Last Name: </th>
           <td>{{user.lastname}}</td>
           <td>
-            <button type="button" class="btn btn-outline-success" (click)="editLastName()">Edit</button>
+            <button class="btn btn-outline-success" data-toggle="modalLN" data-target="#modalLN"
+              (click)="modalLN.show();">Edit</button>
           </td>
         </tr>
         <tr [ngClass]="{
@@ -44,10 +48,163 @@
           <th scope="row">Role</th>
           <td>{{user.role}}</td>
           <td>
-            <button *ngIf="user.role == 'Regular'" type="button"  class="btn btn-success">Upgrade to VIP</button>
+            <button *ngIf="user.role == 'Regular'" type="button" class="btn btn-success">Upgrade to VIP</button>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<div mdbModal #modalFN="mdbModal" class="modal fade" id="firstNameModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-success" role="document" style="width:80%;">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">Change First Name:</h4>
+        <button type="button" class="close" data-dismiss="modalFN" (click)="modalFN.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="md-form mb-5">
+          <form class="container aligned" [formGroup]="firstNameForm" (ngSubmit)="updateFirstName();modalFN.hide()">
+            <div class="form-group">
+              <label class="sr-only" for="oldFirstName">Current First Name:</label>
+              <h5 class="mb-2 mr-sm-2">Current First Name:</h5>
+              <p class="inputreadonly">{{user.firstname}}</p>
+            </div>
+            <div class="form-group">
+              <h5 class="mb-2 mr-sm-2">New First Name:</h5>
+              <label class="sr-only" for="newFirstName"></label>
+              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="" formControlName="newFirstName">
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary">Update</button>
+              <button type="button" class="btn btn-secondary" (click)="modalFN.hide()"
+                data-dismiss="modalFN">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div mdbModal #modalLN="mdbModal" class="modal fade" id="lastNameModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-success" role="document" style="width:80%;">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">Change Last Name:</h4>
+        <button type="button" class="close" data-dismiss="modalLN" (click)="modalLN.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="md-form mb-5">
+          <form class="container aligned" [formGroup]="lastNameForm" (ngSubmit)="updateLastName();modalLN.hide()">
+            <div class="form-group">
+              <label class="sr-only" for="oldLastName">Current Last Name:</label>
+              <h5 class="mb-2 mr-sm-2">Current Last Name:</h5>
+              <p class="inputreadonly">{{user.lastname}}</p>
+            </div>
+            <div class="form-group">
+              <h5 class="mb-2 mr-sm-2">New Last Name:</h5>
+              <label class="sr-only" for="newLastName"></label>
+              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="" formControlName="newLastName">
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary">Update</button>
+              <button type="button" class="btn btn-secondary" (click)="modalLN.hide()"
+                data-dismiss="modalLN">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div mdbModal #modalUN="mdbModal" class="modal fade" id="UserNameModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-info" role="document" style="width:80%;">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">Change Username:</h4>
+        <button type="button" class="close" data-dismiss="modalUN" (click)="modalUN.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="md-form mb-5">
+          <form class="container aligned" [formGroup]="UserNameForm" (ngSubmit)="changeUsername();modalUN.hide()">
+            <div class="form-group">
+              <label class="sr-only" for="oldUserName">Current Username:</label>
+              <h5 class="mb-2 mr-sm-2">Current Username Name:</h5>
+              <p class="inputreadonly">{{user.username}}</p>
+            </div>
+            <div class="form-group">
+              <h5 class="mb-2 mr-sm-2">New Username:</h5>
+              <label class="sr-only" for="newUserName"></label>
+              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="" formControlName="newUserName">
+            </div>
+            <div class="form-group">
+              <h5 class="mb-2 mr-sm-2">Insert Password for Confirmation:</h5>
+              <label class="sr-only" for="passwdConfirm"></label>
+              <input type="password" class="form-control mb-2 mr-sm-2" placeholder="" formControlName="passwdConfirm">
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary">Update</button>
+              <button type="button" class="btn btn-secondary" (click)="modalUN.hide()"
+                data-dismiss="modalUN">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div mdbModal #modalPW="mdbModal" class="modal fade" id="PasswordModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-warning" role="document" style="width:80%;">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">Change Password:</h4>
+        <button type="button" class="close" data-dismiss="modalPW" (click)="modalPW.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="md-form mb-5">
+          <form class="container aligned" [formGroup]="PasswordForm" id="PasswordForm" (ngSubmit)="changePassword();modalPW.hide()">
+            <div class="form-group">
+              <label class="sr-only" for="oldPassword">Current Password:</label>
+              <h5 class="mb-2 mr-sm-2">Insert Current Password:</h5>
+              <input type="password" class="form-control mb-2 mr-sm-2" required minlength="4" placeholder="" formControlName="oldPassword">
+            </div>
+            <div class="form-group">
+              <h5 class="mb-2 mr-sm-2">Insert New Password:</h5>
+              <label class="sr-only" for="newPassword"></label>
+              <input type="password" class="form-control mb-2 mr-sm-2" required minlength="4" placeholder="" formControlName="newPassword">
+            </div>
+            <div class="form-group">
+              <h5 class="mb-2 mr-sm-2">Confirm New Password:</h5>
+              <label class="sr-only" for="newPasswordConfirm"></label>
+              <input type="password" class="form-control mb-2 mr-sm-2" required minlength="4" placeholder=""
+                formControlName="newPasswordConfirm">
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" [disabled]="!(PasswordForm.valid)">Update</button>
+              <button type="button" class="btn btn-secondary" (click)="modalPW.hide()"
+                data-dismiss="modalPW">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

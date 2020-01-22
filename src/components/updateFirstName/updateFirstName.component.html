@@ -1,0 +1,32 @@
+<div mdbModal #frame="mdbModal" class="modal fade" id="firstNameModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-warning" role="document" style="width:80%;">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">Change First Name:</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="md-form mb-5">
+          <form class="container aligned" [formGroup]="firstNameForm" (ngSubmit)="updateFirstName()">
+            <div class="form-group">
+              <label class="sr-only" for="oldFirstName">Current First Name:</label>
+              <p class="form-control mb-2 mr-sm-2 readonly">{{user.firstname}}</p>
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="newFirstName">New First Name:</label>
+              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="New First Name"
+                formControlName="newFirstName">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="updateUserDetails()">Update</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -32,23 +32,33 @@ export class UserserviceService {
       .pipe(map(user => JSON.stringify(user)));
   }
 
-  changeUsername(id: number, username: string) {
+  updateRole(username: string, role: string) {
     const requestOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }),
     };
-    return this.httpClient.post<any>(`${this.serverUrl}/changeUsername`, { username: username, id: id }, requestOptions)
+    return this.httpClient.post<any>(`${this.serverUrl}/changeRole`, { username: username, role: role }, requestOptions)
       .pipe(map(user => JSON.stringify(user)));
   }
 
-  changePassword(username: string, newPass: string) {
+  changeUsername(id: number, username: string, password: string) {
     const requestOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }),
     };
-    return this.httpClient.post<any>(`${this.serverUrl}/changePassword`, { username: username, password: newPass }, requestOptions)
+    return this.httpClient.post<any>(`${this.serverUrl}/changeUsername`, { username: username, id: id, password: password }, requestOptions)
+      .pipe(map(user => JSON.stringify(user)));
+  }
+
+  changePassword(username: string, oldPass: string, newPass: string) {
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.httpClient.post<any>(`${this.serverUrl}/changePassword`, { username: username, oldPassword: oldPass, newPassword: newPass }, requestOptions)
       .pipe(map(user => JSON.stringify(user)));
   }
 

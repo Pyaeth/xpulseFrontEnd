@@ -14,7 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { PulseHeader } from '../components/pulseheader/pulseheader.component';
-import { UpdateUDModal } from '../components/updateUserDetailsModal/updateUDModal.component';
+import { UpdateFirstName } from '../components/UpdateFirstName/updateFirstName.component';
 import { NavBar } from '../components/navbar/navbar.component';
 import { UserComponent } from '../components/user/user.component';
 import { UserDetailsComponent } from '../components/userdetails/userdetails.component';
@@ -43,7 +43,7 @@ const appRoutes: Routes = [
   declarations: [
     PulseHeader,
     NavBar,
-    UpdateUDModal,
+    UpdateFirstName,
     AppComponent,
     UserComponent,
     UserDetailsComponent,
@@ -64,7 +64,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: false } // <-- debugging purposes only
+      { onSameUrlNavigation: 'reload' } // <-- debugging purposes only
     ),
     ChartsModule,
     NoopAnimationsModule
