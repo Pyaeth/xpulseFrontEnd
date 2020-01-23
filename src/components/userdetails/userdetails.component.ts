@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@
 import { User } from 'src/app/entity/user';
 import { UserserviceService } from 'src/app/services/userservice/userservice.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { PasswordValidation } from './passwordvalidation.component';
 
@@ -15,13 +15,6 @@ import { PasswordValidation } from './passwordvalidation.component';
 })
 export class UserDetailsComponent implements OnInit {
   user: User;
-  userDetails = {
-    isUsernameUpdated: false,
-    isPasswordUpdated: false,
-    isFirstNameUpdated: false,
-    isLastNameUpdated: false,
-    isRoleUpdated: false
-  }
   firstNameForm = new FormGroup({
     oldFirstName: new FormControl(),
     newFirstName: new FormControl()
@@ -44,6 +37,9 @@ export class UserDetailsComponent implements OnInit {
   });
 
   ngOnInit() {
+    if (sessionStorage.getItem('user') == null) {
+      this.router.navigateByUrl('/');
+    }
     this.user = JSON.parse(sessionStorage.getItem('user'));
     this.firstNameForm = this.formBuilder.group({
       oldFirstName: this.user.firstname,
@@ -69,7 +65,6 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
     private router: Router,
     private userService: UserserviceService) {
   }

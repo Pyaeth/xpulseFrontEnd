@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { User } from 'src/app/entity/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'user',
@@ -19,11 +20,11 @@ export class UserComponent implements OnInit{
   selectedTimeframe: string;
   isAmountsToggled: boolean;
   
-  constructor() {
+  constructor( private router: Router) {
     this.timePeriod = 'month';
     this.profit = true;
     if (this.balance < 0) {
-      document.getElementById("balance").style.backgroundColor = '#D9363F';
+      document.getElementById('balance').style.backgroundColor = '#D9363F';
     }
     this.selectedTimeframe = 'week';
     this.isAmountsToggled = false;
@@ -35,6 +36,9 @@ export class UserComponent implements OnInit{
   }
 
   ngOnInit() {
+    if (sessionStorage.getItem('user') == null) {
+      this.router.navigateByUrl('/');
+    }
     this.user = JSON.parse(sessionStorage.getItem('user'));
     console.log(this.user);
   }
