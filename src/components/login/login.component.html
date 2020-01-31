@@ -18,7 +18,7 @@
           <form class="container aligned" [formGroup]="userForm" (ngSubmit)="onClickSubmit()">
             <label class="sr-only" for="username">Username</label>
             <input type="text" class="form-control mb-2 mr-sm-2" id="exampleInputEmail1" placeholder="Username"
-              formControlName="username">
+              formControlName="username" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off">
 
             <label for="password"></label>
             <div class="input-group mb-2 mr-sm-2">
@@ -30,7 +30,7 @@
             </div>
 
             <div class="form-check mb-2 mr-sm-2" style="text-align:center;">
-              <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+              <input class="form-check-input" type="checkbox" id="inlineFormCheck" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off">
               <label class="form-check-label" for="inlineFormCheck"> Remember me </label>
             </div>
             <button *ngIf="!isCreateNewUserRequested" class="btn btn-success btn-lg" mdbWavesEffect>Login</button>

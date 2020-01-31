@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          sessionStorage.setItem("user", data.toString());
+          sessionStorage.setItem('user', data.toString());
           this.router.navigateByUrl('home');
         },
         error => {

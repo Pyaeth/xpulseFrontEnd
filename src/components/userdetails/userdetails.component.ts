@@ -74,7 +74,7 @@ export class UserDetailsComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          sessionStorage.setItem("user", data.toString());
+          sessionStorage.setItem('user', data);
           this.router.routeReuseStrategy.shouldReuseRoute = () => false;
           this.router.onSameUrlNavigation = 'reload';
           this.router.navigate(['/myXpulse']);
@@ -88,7 +88,7 @@ export class UserDetailsComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          sessionStorage.setItem("user", data.toString());
+          sessionStorage.setItem('user', data);
           this.router.routeReuseStrategy.shouldReuseRoute = () => false;
           this.router.onSameUrlNavigation = 'reload';
           this.router.navigate(['/myXpulse']);
@@ -102,7 +102,7 @@ export class UserDetailsComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          sessionStorage.setItem("user", data.toString());
+          sessionStorage.setItem('user', data);
           this.router.routeReuseStrategy.shouldReuseRoute = () => false;
           this.router.onSameUrlNavigation = 'reload';
           this.router.navigate(['/myXpulse']);
@@ -116,7 +116,7 @@ export class UserDetailsComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          sessionStorage.setItem("user", data.toString());
+          sessionStorage.setItem('user', data);
           this.router.routeReuseStrategy.shouldReuseRoute = () => false;
           this.router.onSameUrlNavigation = 'reload';
           this.router.navigate(['/myXpulse']);

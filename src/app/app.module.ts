@@ -14,7 +14,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { PulseHeader } from '../components/pulseheader/pulseheader.component';
-import { UpdateFirstName } from '../components/UpdateFirstName/updateFirstName.component';
 import { NavBar } from '../components/navbar/navbar.component';
 import { UserComponent } from '../components/user/user.component';
 import { UserDetailsComponent } from '../components/userdetails/userdetails.component';
@@ -35,7 +34,7 @@ const appRoutes: Routes = [
     redirectTo: '/myXpulse',
     pathMatch: 'full'
   },
-  { path: 'home', component: UserComponent, data: { title: 'Xpulse:: Login' } },
+  { path: 'home', component: UserComponent, data: { title: 'Xpulse' } },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -43,7 +42,6 @@ const appRoutes: Routes = [
   declarations: [
     PulseHeader,
     NavBar,
-    UpdateFirstName,
     AppComponent,
     UserComponent,
     UserDetailsComponent,
