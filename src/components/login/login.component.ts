@@ -72,7 +72,12 @@ export class LoginComponent implements OnInit {
         data => {
           console.log(data);
           sessionStorage.setItem('user', data.toString());
-          this.router.navigateByUrl('home');
+          this.router.navigate(['/home'], {
+            queryParams: {
+              'selectedTimeframe': 'month',
+              'isAmountsToggled': false
+            }
+          });
         },
         error => {
           this.isInvalidLogin = true;

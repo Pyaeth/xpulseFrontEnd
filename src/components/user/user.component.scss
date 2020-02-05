@@ -52,3 +52,8 @@ h5 {
 .cards:hover > #balance {
   background-color: #71e3d9;
 }
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}

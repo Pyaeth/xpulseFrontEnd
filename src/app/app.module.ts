@@ -21,6 +21,7 @@ import { PageNotFoundComponent } from '../components/404pagenotfound/404.compone
 import { WelcomeComponent } from '../components/welcomepage/welcome.component';
 import { LoginComponent } from '../components/login/login.component';
 import { DashboardDoughnutChartComponent } from '../components/dashboard-doughnut-chart/dashboard-doughnut-chart.component';
+
 import { AuthenticationService } from './services/authenticationservice/authentication.service';
 import { AlertService } from './services/alertservice/alert.service';
 
@@ -29,7 +30,7 @@ const appRoutes: Routes = [
   { path: '', component: WelcomeComponent, data: { title: 'Xpulse:: Welcome' } },
   { path: 'login', component: LoginComponent, data: { title: 'Xpulse:: Login' } },
   { path: 'register', component: LoginComponent, data: { title: 'Xpulse:: Register', isCreateNewUserRequested: true} },
-  { path: 'myXpulse', component: UserDetailsComponent, data: { title: 'myXpulse' } },
+  { path: 'myXpulse', component: UserDetailsComponent},
   { path: 'myXpulse',
     redirectTo: '/myXpulse',
     pathMatch: 'full'

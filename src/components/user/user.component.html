@@ -8,8 +8,8 @@
             <div class="tiles" id="transactions">
               <p><i class="fa fa-credit-card fa-5x tile-icon" aria-hidden="true"></i></p>
               <p class="tile-primary"> Transactions: {{total}} </p>
-              <p class="tile-secondary"> Incoming: {{inc}}</p>
-              <p class="tile-secondary"> Outgoing: {{out}}</p>
+              <p class="tile-secondary" (innerText)="inc"> Incoming: {{inc}}</p>
+              <p class="tile-secondary" (innerText)="out"> Outgoing: {{out}}</p>
             </div>
             <div class="card-body" style="align-content: center;">
               <h5 class="card-title">Transactions this {{selectedTimeframe}}</h5>
@@ -21,8 +21,9 @@
           <div class="card cards" style="width: 100%">
             <div class="tiles" id="balance">
               <p><i class="fa fa-balance-scale fa-5x  tile-icon" aria-hidden="true"></i></p>
-              <p class="tile-primary"> Balance: {{balance}} </p>
-              <p class="tile-secondary"> Compared to last {{selectedTimeframe}}:
+              <br>
+              <p class="tile-primary"> Balance: {{balance}} {{currency}} </p>
+              <p class="tile-secondary"> Compared to last {{selectedTimeframe}}: {{comparedToLast}} {{currency}}
                 <i class="fa fa-caret-up" aria-hidden="true" *ngIf="profit" style="color:green"></i>
                 <i class="fa fa-caret-down" aria-hidden="true" *ngIf="!profit" style="color:red"></i>
               </p>
@@ -38,9 +39,9 @@
           <div class="card cards" style="width: 100%">
             <div class="tiles" id="options">
               <p><i class="fa fa-cogs fa-5x  tile-icon" aria-hidden="true"></i></p>
-              <p class="tile-primary"> Time period of reference: 
+              <p class="tile-primary"> Time period of reference:
                 <mat-form-field>
-                  <mat-select [(value)]="selectedTimeframe" (onChange)="selectTimeframe($event)">
+                  <mat-select [(value)]="selectedTimeframe" (selectionChange)="changeTimeFrame()">
                     <mat-option *ngFor="let time of times" value="{{time}}">
                       {{time}}
                     </mat-option>
@@ -48,22 +49,23 @@
                 </mat-form-field>
               </p>
               <p class="tile-primary toggle-enabled"> Show amounts instead of numbers.&nbsp;
-                <mat-slide-toggle color="primary"></mat-slide-toggle>
+                <mat-slide-toggle color="primary" [([(ngModel)]="isAmountsToggled" (change)="changeOptions($event)">
+                </mat-slide-toggle>
               </p>
-              
-          </div>
-          <div class="card-body" style="align-content: center;">
-            <h5 class="card-title">Report options</h5>
+
+            </div>
+            <div class="card-body" style="align-content: center;">
+              <h5 class="card-title">Report options</h5>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-sm-6 card cards">
-    <dashboard-doughnut-chart class="tiles" style="background-color: #ffffff;"></dashboard-doughnut-chart>
-    <div class="card-body" style="align-content: center;">
-      <h5 class="card-title">Statistics per category of transaction</h5>
+    <div class="col-sm-6 card cards">
+      <dashboard-doughnut-chart class="tiles" style="background-color: #ffffff;"></dashboard-doughnut-chart>
+      <div class="card-body" style="align-content: center;">
+        <h5 class="card-title">Statistics per category of transaction</h5>
+      </div>
     </div>
   </div>
-</div>
 </div>

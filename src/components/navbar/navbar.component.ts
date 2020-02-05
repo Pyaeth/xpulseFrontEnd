@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { User } from 'src/app/entity/user';
 import { AuthenticationService } from 'src/app/services/authenticationservice/authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';

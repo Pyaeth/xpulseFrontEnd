@@ -1,0 +1,5 @@
+<!-- <file-upload #fu (change)="fu.upload()" [multiple]="true"></file-upload>
+-->
+
+<input type="file" #files (change)="change(files)" placeholder="Upload CSV file" accept=".csv"/>
+<pre>{{fileContents$|async}}</pre>
