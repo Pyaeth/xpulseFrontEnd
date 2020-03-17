@@ -40,18 +40,12 @@ h5 {
 }
 
 #transactions {
-  background-color: #bd8619;
+  background-color: #0e699e;
 }
 .cards:hover > #transactions {
-  background-color: #e6b960;
+  background-color: #5694b8;
 }
 
-#balance {
-  background-color: #10ccbc;
-}
-.cards:hover > #balance {
-  background-color: #71e3d9;
-}
 .wrapper {
   display: flex;
   width: 100%;

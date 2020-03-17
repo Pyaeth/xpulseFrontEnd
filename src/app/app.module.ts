@@ -24,6 +24,7 @@ import { DashboardDoughnutChartComponent } from '../components/dashboard-doughnu
 
 import { AuthenticationService } from './services/authenticationservice/authentication.service';
 import { AlertService } from './services/alertservice/alert.service';
+import { ImportCSVComponent } from 'src/components/importcsv/importcsv.component';
 
 
 const appRoutes: Routes = [
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'Xpulse:: Login' } },
   { path: 'register', component: LoginComponent, data: { title: 'Xpulse:: Register', isCreateNewUserRequested: true} },
   { path: 'myXpulse', component: UserDetailsComponent},
+  { path: 'importcsv', component: ImportCSVComponent},
   { path: 'myXpulse',
     redirectTo: '/myXpulse',
     pathMatch: 'full'
@@ -49,7 +51,8 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     WelcomeComponent,
     DashboardDoughnutChartComponent,
-    LoginComponent
+    LoginComponent,
+    ImportCSVComponent
   ],
   imports: [
     BrowserModule,

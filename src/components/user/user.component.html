@@ -8,8 +8,8 @@
             <div class="tiles" id="transactions">
               <p><i class="fa fa-credit-card fa-5x tile-icon" aria-hidden="true"></i></p>
               <p class="tile-primary"> Transactions: {{total}} </p>
-              <p class="tile-secondary" (innerText)="inc"> Incoming: {{inc}}</p>
-              <p class="tile-secondary" (innerText)="out"> Outgoing: {{out}}</p>
+              <p class="tile-secondary" (innerText)="inc"> Incoming: {{inc}} {{currencyIf}}</p>
+              <p class="tile-secondary" (innerText)="out"> Outgoing: {{out}} {{currencyIf}}</p>
             </div>
             <div class="card-body" style="align-content: center;">
               <h5 class="card-title">Transactions this {{selectedTimeframe}}</h5>
@@ -18,8 +18,8 @@
         </div>
 
         <div class="col-sm-6">
-          <div class="card cards" style="width: 100%">
-            <div class="tiles" id="balance">
+          <div class="card cards" style="width: 100%" (mouseover)="changeColor(true)" (mouseout)="changeColor(false)">
+            <div class="tiles" id="balance"  [style.background]="balancecolor">
               <p><i class="fa fa-balance-scale fa-5x  tile-icon" aria-hidden="true"></i></p>
               <br>
               <p class="tile-primary"> Balance: {{balance}} {{currency}} </p>
