@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserserviceService {
 
-  private serverUrl = 'http://localhost:8081';
+  private serverUrl = environment.api;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,7 +19,7 @@ export class UserserviceService {
         'Content-Type': 'application/json'
       }),
     };
-    return this.httpClient.post<any>(`${this.serverUrl}/changeFirstName`, { username: username, firstname: firstName }, requestOptions)
+    return this.httpClient.post<any>(`${this.serverUrl}`+'changeFirstName', { username: username, firstname: firstName }, requestOptions)
       .pipe(map(user => JSON.stringify(user)));
   }
 
@@ -28,7 +29,7 @@ export class UserserviceService {
         'Content-Type': 'application/json'
       }),
     };
-    return this.httpClient.post<any>(`${this.serverUrl}/changeLastName`, { username: username, lastname: lastName }, requestOptions)
+    return this.httpClient.post<any>(`${this.serverUrl}`+'changeLastName', { username: username, lastname: lastName }, requestOptions)
       .pipe(map(user => JSON.stringify(user)));
   }
 
@@ -38,7 +39,7 @@ export class UserserviceService {
         'Content-Type': 'application/json'
       }),
     };
-    return this.httpClient.post<any>(`${this.serverUrl}/changeRole`, { username: username, role: role }, requestOptions)
+    return this.httpClient.post<any>(`${this.serverUrl}`+'changeRole', { username: username, role: role }, requestOptions)
       .pipe(map(user => JSON.stringify(user)));
   }
 
@@ -48,7 +49,7 @@ export class UserserviceService {
         'Content-Type': 'application/json'
       }),
     };
-    return this.httpClient.post<any>(`${this.serverUrl}/changeUsername`, { username: username, id: id, password: password }, requestOptions)
+    return this.httpClient.post<any>(`${this.serverUrl}`+'changeUsername', { username: username, id: id, password: password }, requestOptions)
       .pipe(map(user => JSON.stringify(user)));
   }
 
@@ -58,12 +59,12 @@ export class UserserviceService {
         'Content-Type': 'application/json'
       }),
     };
-    return this.httpClient.post<any>(`${this.serverUrl}/changePassword`, { username: username, oldPassword: oldPass, newPassword: newPass }, requestOptions)
+    return this.httpClient.post<any>(`${this.serverUrl}`+'changePassword', { username: username, oldPassword: oldPass, newPassword: newPass }, requestOptions)
       .pipe(map(user => JSON.stringify(user)));
   }
 
   deleteUser(id: number): Observable<string> {
-    return this.httpClient.delete(`${this.serverUrl}/delete`, { responseType: 'text' });
+    return this.httpClient.delete(`${this.serverUrl}`+'delete', { responseType: 'text' });
   }
 
 }

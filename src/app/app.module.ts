@@ -11,8 +11,6 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
-
 import { PulseHeader } from '../components/pulseheader/pulseheader.component';
 import { NavBar } from '../components/navbar/navbar.component';
 import { UserComponent } from '../components/user/user.component';
@@ -25,6 +23,8 @@ import { DashboardDoughnutChartComponent } from '../components/dashboard-doughnu
 import { AuthenticationService } from './services/authenticationservice/authentication.service';
 import { AlertService } from './services/alertservice/alert.service';
 import { ImportCSVComponent } from 'src/components/importcsv/importcsv.component';
+import { FileUploadComponent } from 'src/components/fileupload/fileupload.component';
+import { AppComponent } from './app.component';
 
 
 const appRoutes: Routes = [
@@ -34,7 +34,7 @@ const appRoutes: Routes = [
   { path: 'myXpulse', component: UserDetailsComponent},
   { path: 'importcsv', component: ImportCSVComponent},
   { path: 'myXpulse',
-    redirectTo: '/myXpulse',
+    redirectTo: 'myXpulse',
     pathMatch: 'full'
   },
   { path: 'home', component: UserComponent, data: { title: 'Xpulse' } },
@@ -52,7 +52,8 @@ const appRoutes: Routes = [
     WelcomeComponent,
     DashboardDoughnutChartComponent,
     LoginComponent,
-    ImportCSVComponent
+    ImportCSVComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +67,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
-      { onSameUrlNavigation: 'reload' } // <-- debugging purposes only
+      { onSameUrlNavigation: 'reload',
+      useHash: false } // <-- debugging purposes only
     ),
     ChartsModule,
     NoopAnimationsModule

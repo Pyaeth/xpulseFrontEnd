@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private serverUrl = 'http://localhost:8081';
+  private serverUrl = environment.api;
   currentUserValue: string;
 
   constructor(private httpClient: HttpClient) { }
@@ -16,7 +17,7 @@ export class AuthenticationService {
       headers : new HttpHeaders({'Content-Type': 'application/json'
     }),
     };
-    return this.httpClient.post<any>(`${this.serverUrl}/login`, { username: username, password: password }, requestOptions)
+    return this.httpClient.post<any>(`${this.serverUrl}`+'login', { username: username, password: password }, requestOptions)
             .pipe(map(user => JSON.stringify(user)));
   }
 
@@ -30,7 +31,7 @@ export class AuthenticationService {
         'Content-Type': 'application/json'
       }),
     };
-    return this.httpClient.post<any>(`${this.serverUrl}/create`, { username: username, password: password }, requestOptions)
+    return this.httpClient.post<any>(`${this.serverUrl}`+'create', { username: username, password: password }, requestOptions)
       .pipe(map(user => JSON.stringify(user)));
   }
 }

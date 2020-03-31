@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../app/services/authenticationservice/authentication.service';
 import { AlertService } from '../../app/services/alertservice/alert.service';
 import { first } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'login',
@@ -71,13 +72,19 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
+          console.log(environment.api);
           sessionStorage.setItem('user', data.toString());
-          this.router.navigate(['/home'], {
-            queryParams: {
-              'selectedTimeframe': 'month',
-              'isAmountsToggled': false
-            }
-          });
+          let user:User = JSON.parse(sessionStorage.getItem('user'));
+          if (user.id == 0)
+            this.isInvalidLogin = true;
+          else {
+            this.router.navigate(['/home'], {
+              queryParams: {
+                'selectedTimeframe': 'month',
+                'isAmountsToggled': false
+              }
+            });
+          }
         },
         error => {
           this.isInvalidLogin = true;
