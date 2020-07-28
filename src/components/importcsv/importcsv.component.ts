@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { User } from 'src/app/entity/user';
-import { UserserviceService } from 'src/app/services/userservice/userservice.service';
+import { UserService } from 'src/app/services/userservice/user.service';
 import { Router } from '@angular/router';
 //import { MdbFileUploadModule } from ;
 import { first } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { first } from 'rxjs/operators';
   selector: 'importcsv',
   templateUrl: './importcsv.component.html',
   styleUrls: ['./importcsv.component.scss'],
-  providers: [UserserviceService],
+  providers: [UserService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImportCSVComponent implements OnInit {
@@ -24,7 +24,7 @@ export class ImportCSVComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userService: UserserviceService) {
+    private userService: UserService) {
   }
 
   file: File;

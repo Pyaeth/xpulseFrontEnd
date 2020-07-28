@@ -3,11 +3,12 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { Preferences } from 'src/app/entity/preferences';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserserviceService {
+export class UserService {
 
   private serverUrl = environment.api;
 
@@ -40,6 +41,16 @@ export class UserserviceService {
       }),
     };
     return this.httpClient.post<any>(`${this.serverUrl}`+'changeRole', { username: username, role: role }, requestOptions)
+      .pipe(map(user => JSON.stringify(user)));
+  }
+
+  updateUserPreferences(id: number, preferences: Preferences) {
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.httpClient.post<any>(`${this.serverUrl}`+'changeUserPrefs', { id: id, preferences: preferences }, requestOptions)
       .pipe(map(user => JSON.stringify(user)));
   }
 

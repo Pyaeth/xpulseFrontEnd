@@ -5,11 +5,13 @@ import { Statistic } from 'src/app/entity/statistic';
 import { TransactionService } from 'src/app/services/transactionservice/transaction.service';
 import { first } from 'rxjs/internal/operators/first';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { Preferences } from 'src/app/entity/preferences';
+import { UserService } from 'src/app/services/userservice/user.service';
 
 @Component({
   selector: 'user',
   templateUrl: './user.component.html',
-  providers: [TransactionService],
+  providers: [TransactionService, UserService],
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
@@ -28,11 +30,14 @@ export class UserComponent implements OnInit {
   statistic: Statistic;
   currency: string;
   currencyIf: string;
+  currencies: string[] = ['RON', 'EUR', 'USD', 'GBP', 'CHF'];
+  selectedCurrencyCode: string;
   balancecolor:string;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private transactionService: TransactionService) {
+    private transactionService: TransactionService,
+    private userService: UserService) {
     this.timePeriod = 'month';
     this.profit = true;
     if (this.balance < 0) {
@@ -55,13 +60,14 @@ export class UserComponent implements OnInit {
         console.log(params);
         this.selectedTimeframe = params['selectedTimeframe'] == undefined ? 'month' : params['selectedTimeframe'];
         console.log(this.selectedTimeframe);
+        this.currency = params['currencyCode'] == undefined ? 'RON' : params['currencyCode'];
         this.isAmountsToggled = params['isAmountsToggled'];
       }
     );
 
     this.user = JSON.parse(sessionStorage.getItem('user'));
 
-    this.currency = 'lei';
+    
     if (this.isAmountsToggled) {
       this.currencyIf = this.currency;
     } else {
@@ -95,10 +101,27 @@ export class UserComponent implements OnInit {
         });
   }
 
+  updateUserPreferences(newTimeFrame:string, newCurrencyCode:string) {
+    let preferences:Preferences;
+    preferences.timeFrame = newTimeFrame;
+    preferences.currencyCode = newCurrencyCode;
+    this.userService.updateUserPreferences(this.user.id, preferences)
+      .pipe(first())
+      .subscribe(
+        data => {
+          sessionStorage.setItem('user', data);
+        },
+        error => {
+
+        });
+  }
+
   changeTimeFrame() {
     console.log('changed timeframe reference:');
     console.log(this.selectedTimeframe);
     this.getStatistics();
+    if (this.selectedTimeframe != this.user.preferences.timeFrame)
+      this.updateUserPreferences(this.selectedTimeframe,null);
   }
 
   changeOptions(slider: MatSlideToggleChange) {
@@ -128,5 +151,11 @@ export class UserComponent implements OnInit {
       else if (this.balancecolor == '#71b85c') //light green
         this.balancecolor = '#42ad21'; //dark green
     }
+  }
+
+  changeCurrencyCode() {
+    this.currency = this.selectedCurrencyCode;
+    if (this.user.preferences.currencyCode != this.selectedCurrencyCode)
+      this.updateUserPreferences(null, this.selectedCurrencyCode);
   }
 }

@@ -25,6 +25,8 @@ import { AlertService } from './services/alertservice/alert.service';
 import { ImportCSVComponent } from 'src/components/importcsv/importcsv.component';
 import { FileUploadComponent } from 'src/components/fileupload/fileupload.component';
 import { AppComponent } from './app.component';
+import { UserService } from './services/userservice/user.service';
+import { TransactionService } from './services/transactionservice/transaction.service';
 
 
 const appRoutes: Routes = [
@@ -75,7 +77,9 @@ const appRoutes: Routes = [
   ],
   providers: [
     AuthenticationService,
-    AlertService
+    AlertService,
+    UserService,
+    TransactionService
   ],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA]

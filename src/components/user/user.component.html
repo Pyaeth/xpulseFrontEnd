@@ -47,6 +47,14 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
+                &nbsp;&nbsp;Default currency: 
+                <mat-form-field>
+                  <mat-select [(value)]="selectedCurrencyCode" (selectionChange)="changeCurrencyCode()">
+                    <mat-option *ngFor="let currency of currencies" value="{{currency}}">
+                      {{currency}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
               </p>
               <p class="tile-primary toggle-enabled"> Show amounts instead of numbers.&nbsp;
                 <mat-slide-toggle color="primary" [([(ngModel)]="isAmountsToggled" (change)="changeOptions($event)">

@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { User } from 'src/app/entity/user';
-import { UserserviceService } from 'src/app/services/userservice/userservice.service';
+import { UserService } from 'src/app/services/userservice/user.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { PasswordValidation } from './passwordvalidation.component';
   selector: 'myxpulse',
   templateUrl: './userdetails.component.html',
   styleUrls: ['./userdetails.component.scss'],
-  providers: [UserserviceService],
+  providers: [UserService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserDetailsComponent implements OnInit {
@@ -66,7 +66,7 @@ export class UserDetailsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserserviceService) {
+    private userService: UserService) {
   }
 
   updateFirstName() {

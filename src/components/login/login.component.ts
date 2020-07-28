@@ -80,8 +80,9 @@ export class LoginComponent implements OnInit {
           else {
             this.router.navigate(['/home'], {
               queryParams: {
-                'selectedTimeframe': 'month',
-                'isAmountsToggled': false
+                'selectedTimeframe': user.preferences.timeFrame,
+                'isAmountsToggled': false,
+                'currencyCode': user.preferences.currencyCode
               }
             });
           }
